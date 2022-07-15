@@ -1,0 +1,166 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://kit.fontawesome.com/3a7e8b6e65.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    
+</head>
+<body>
+    <div class="admin-container">
+        <header class="bg-secondary admin-header">
+            <div class="logo col-3 text-center">
+                <a href="#"><h1>SMI University</h1></a>
+            </div>
+            <div class="profile col-3">
+                <img src="../images/profile.jpg" height="30" alt="Profile Image">
+                <h2>Hashim Abbas</h2>
+            </div>
+        </header>
+        <main>
+            <aside class="bg-dark col-3">
+                <nav>
+                    <ul>
+                        <li></li>
+                        <li key="1"><i class="fa-solid fa-graduation-cap"></i>Students</li>
+                        <ul key="1" style="padding-top:0px; margin-top: 0px;" class="inner-list">
+                            <li><i class="fa-solid fa-plus"></i>New Admission</li>
+                            <li><i class="fa-solid fa-list"></i>Students List</li>
+                        </ul>
+                        <li key="2"><i class="fa-solid fa-person-chalkboard"></i>Teachers</li>
+                        <ul key="2" style="padding-top:0px; margin-top: 0px;" class="inner-list">
+                            <li><i class="fa-solid fa-plus"></i>Hire Teacher</li>
+                            <li><i class="fa-solid fa-list"></i>Teachers List</li>
+                        </ul>
+                        <li><i class="fa-solid fa-calendar-days"></i></i>Curriculum</li>
+                        <li><i class="fa-solid fa-receipt"></i>Payroll</li>
+                        <li key="3"><i class="fa-solid fa-calendar-check"></i>Events</li>
+                        <ul key="3" style="padding-top:0px; margin-top: 0px;" class="inner-list">
+                            <li><i class="fa-solid fa-plus"></i>Organize Event</li>
+                            <li><i class="fa-solid fa-list"></i>Event List</li>
+                            <li><i class="fa-solid fa-envelope"></i>Event Requests</li>
+                        </ul>
+                        <li key="4"><i class="fa-solid fa-book"></i>Courses</li>
+                        <ul key="4" style="padding-top:0px; margin-top: 0px;" class="inner-list">
+                            <li><i class="fa-solid fa-plus"></i>Add Courses</li>
+                            <li><i class="fa-solid fa-list"></i>Courses List</li>
+                        </ul>
+                    </ul>
+                </nav>
+            </aside>
+            <section id="main-content" class="col-9">
+                <h1 class="mb-5">Management of BS in Computer Science of semester 1</h1>
+                <div class="course-related">
+                    <div class="courses col-6">
+                            <p>Calculus &amp; Analytical Geometry</p>
+                            <p>Programming Fundamentals</p>
+                            <p>Applied Physics</p>
+                            <p>ICT</p>
+                            <p>English I</p>
+                            <p>Arabic I</p>
+                            <p>English II</p>
+                            <p>Object Oriented Programming</p>
+                            <p>Digital Logic Design</p>
+                            <p>Probability and Statistics</p>
+                    </div>
+                    <div class="selected-courses col-6" id="course-dropdown">
+                        <p>Drop Courses here</p>
+                        <div class="drop-area" style="border: 1px solid black; height: 100%;">&nbsp;</div>
+                        <p class="text-danger text"></p>
+                        <button type="button" style="width: 100%;" class="submit-btn btn btn-info">Submit</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script>
+
+    </script>
+    <script>
+        $(document).ready(function() {
+            let items = [];
+            let error;
+            $(".courses p").draggable({helper: 'clone'});
+            $(".drop-area").droppable({
+                accept: '.courses p',
+                drop: function(ev, ui) {
+                    error = false;
+                    $(".text").text("")
+                    console.log(error)
+                    var droppedItem = $(ui.draggable).clone();
+                    let text = droppedItem.html()
+                    for(let i = 0; i < items.length; i++) {
+                        if(items[i] == text) {
+                            console.log("Already there");
+                            error = true;
+                        }
+                    }
+                    if(items.length == 6) {
+                        error = true;
+                    }
+                    if(error) {
+                        $(".text").text("Sorry That Element is already been inserted or you are trying to put more than 6 Courses")
+                    } else {
+                        items.push(text)
+                        console.log(items)
+                        $(this).append(droppedItem).addClass("singleCourses");
+                    }
+                }
+            });
+            $(".submit-btn").click(function() {
+                if(items.length == 0) {
+                    $(".text").text("Please Drop courses in the above box")
+                } else {
+                    console.log('Submitted')
+                }
+            })
+        })
+    </script>
+    <script>
+        
+        $(document).ready(function(){
+            $('li').click(function() {
+                const key = $(this).attr("key")
+                const element = $(`.inner-list[key=${key}]`)
+                let isBlock = element.css("display") == "none"
+                if(isBlock) {
+                    $(".inner-list").slideUp("slow")
+                    element.slideDown("slow")
+                }
+                else 
+                    element.slideUp("slow")
+            })
+        })
+        const ctx = document.getElementById("myChart").getContext('2d')
+        const mixedChart = new Chart(ctx, {
+    data: {
+        datasets: [{
+            type: 'line',
+            label: 'Teachers',
+            data: [55, 12, 65, 35, 98, 44, 98, 31, 54, 14, 43, 76],
+            tension: 0.1,
+            borderColor: '#E65A4B',
+            fill: true
+        }, {
+            type: 'line',
+            label: 'Students',
+            borderColor: '#5B65E3',
+            data: [5, 32, 25, 55, 68, 14, 48, 35, 54, 14, 76, 43],
+            tension: 0.1,
+            fill: true
+        }],
+        labels: ['January', 'February', 'March', 'April', "May", "June", "July", "August", "September", "October", "November", "December"]
+    }
+});
+
+    </script>
+</body>
+</html>
