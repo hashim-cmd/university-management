@@ -82,7 +82,9 @@
         </main>
     </div>
     <script>
-
+        $(document).on("click", ".singleCourses p", function(event) {
+            alert("Clicked")
+        })
     </script>
     <script>
         $(document).ready(function() {
@@ -111,8 +113,11 @@
                     } else {
                         items.push(text)
                         console.log(items)
-                        $(this).append(droppedItem).addClass("singleCourses");
-                    }
+                        let childLength = $(".drop-area p is").children().length;    
+                        const course = $(this).append(droppedItem).addClass("singleCourses");
+                        if(childLength == 0)    
+                            $(".drop-area p").append('<i class="fa-solid fa-circle-xmark"></i>');
+                        }
                 }
             });
             $(".submit-btn").click(function() {
@@ -161,6 +166,14 @@
     }
 });
 
+    </script>
+    
+    <script>
+        $(document).ready(function() {
+            $(".singleCourses p").click(function() {
+                alert("Clicked!")
+            })
+        })
     </script>
 </body>
 </html>

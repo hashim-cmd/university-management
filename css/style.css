@@ -155,10 +155,13 @@ form {
 .courses p, .drop-area p {
     border: 1px solid black;
     margin: 3px;
-    padding: 5px;
+    padding: auto;
+    padding-left: 10px;
+    padding-right: 10px;
     border-radius: 10px;
     display: inline;
 }
+
 .course-related {
     display: flex;
     justify-content: space-between;
