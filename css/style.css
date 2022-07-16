@@ -192,3 +192,73 @@ form {
     margin: 0px;
     display: inline;
 }
+.teacher-table::-webkit-scrollbar-track {
+    background: orange;        /* color of the tracking area */
+}
+.teacher-table {
+    height: 250px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.filters {
+    z-index: 10;
+}
+.profile {
+    cursor: pointer ;
+}
+.details {
+    background-color: white;
+    position: absolute;
+    width: 20%;
+    right: 35px;
+    height: 250px;
+    top: 60px;
+    z-index: 11;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.details header {
+    background-color: black;
+    border-radius: 10px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    height: 40%;
+}
+.details header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.details header > h2 {
+    font-size: 20px;
+}
+.details header img {
+    border-radius: 50px;
+    position: absolute;
+    top: 70px;
+}
+.details ul {
+    margin-top: 25px;
+    list-style: none;
+}
+.details {
+    display: none;
+}
+.details ul li{
+    margin-bottom: 10px;
+}
+.details ul li a {
+    color: black;
+}
+.details ul li a :last-child {
+    border: 1px solid black;
+    padding: 5px 10px 5px 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.details ul li :last-child:hover {
+    filter: invert();
+    background-color: black;
+    color: white;
+}

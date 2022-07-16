@@ -7,12 +7,9 @@
     <title>Admin | Home</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <script src="https://kit.fontawesome.com/3a7e8b6e65.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-  
 </head>
 <body>
     <div class="admin-container">
@@ -23,6 +20,19 @@
             <div class="profile col-3">
                 <img src="../images/profile.jpg" height="30" alt="Profile Image">
                 <h2>Hashim Abbas</h2>
+            </div>
+            <div class="details">
+                <header class="profile-header">
+                    <h2>Hashim Abbas</h2>
+                    <img src="../images/profile.jpg" height="50" alt="">
+                </header>
+                <section id="profile-body">
+                    <ul>
+                        <li><a href="#">Profile Details</a></li>
+                        <li><a href="#">Security Details</a></li>
+                        <li><a href="#"><i class="fa-solid fa-power-off"></i></a></li>
+                    </ul>
+                </section>
             </div>
         </header>
         <main>
@@ -57,72 +67,86 @@
                 </nav>
             </aside>
             <section id="main-content" class="col-9">
-                    <header class="section-header">
-                        <h1 style="margin-bottom: 20px; font-size: 25px;">Departments > Degrees > Semester</h1>
-                        <div class="form-group col-3">
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Search">
-                        </div>
-                    </header>   
+                <h1>Payroll</h1>
+                <br>
+                <div class="cards" style="display: flex; justify-content: space-around ;">
+                    <div class="card col-6">
+                        <h3>Total Teachers</h3>
+                        <p>123</p>
+                    </div>
+                    <div class="card col-6">
+                        <h3>Total to pay Teachers</h3>
+                        <p>123</p>
+                    </div>
+                </div>
+                <div class="teacher-table col-12" style="margin-top: 20px;">
                     
-                <table class="table table-striped">
-                    
-                    <thead>
-                      <tr>
-                        <th scope="col">Request By</th>
-                        <th scope="col">Topic</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr data-position="1">
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>lark</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">Reject</button>
-                            <button type="button" class="btn btn-success">Approve</button>
-                        </td>
-                      </tr>
-                      <tr data-position="2">
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>kaka</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">Reject</button>
-                            <button type="button" class="btn btn-success">Approve</button>
-                        </td>
-                      </tr>
-                      <tr data-position="3">
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>laka</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">Reject</button>
-                            <button type="button" class="btn btn-success">Approve</button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <p>3 of 400 Results Found (You can organize list by sorting manually most top ar going to held soon)</p>
+                <div class="filters">
+                    <input type="text" name="search" id="search" class="search form-control" style="margin-bottom: 10px; width: 20%;">
+                    <div class="dropdown">
+                        <select class="form-control">
+                            <option>Bachelors</option>
+                        </select>
+                      </div>
+                </div>
+                    <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th scope="col">Teacher ID</th>
+                            <th scope="col">Department</th>
+                            <th scope="col">Designation</th>
+                            <th scope="col">Salary</th>
+                            <th scope="col" style="text-align: center;">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr data-position="1">
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>lark</td>
+                            <td>lark</td>
+                            <td style="text-align: center;">
+                                <button type="button" class="btn btn-success" disabled data-toggle="tooltip" data-placement="top" title="Already Paid">Paid</button>
+                                <button type="button" class="btn btn-success">Pay</button>
+                            </td>
+                          </tr>
+                          <tr data-position="2">
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>kaka</td>
+                            <td>lark</td>
+                            <td style="text-align: center;">
+                                <button type="button" class="btn btn-success" disabled data-toggle="tooltip" data-placement="top" title="Already Paid">Paid</button>
+                                <button type="button" class="btn btn-success">Pay</button>
+                            </td>
+                          </tr>
+                          <tr data-position="3">
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>laka</td>
+                            <td>lark</td>
+                            <td style="text-align: center;">
+                                <button type="button" class="btn btn-success" disabled data-toggle="tooltip" data-placement="top" title="Already Paid">Paid</button>
+                                <button type="button" class="btn btn-success">Pay</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
             </section>
         </main>
     </div>
+
     <script>
         $(document).ready(function() {
-            let events = []
-            $("table tbody").sortable({
-                update: function() {
-                    events = []
-                    $(this).children().each(function(index) {
-                        let event = $(this).attr("data-position");
-                        events.push(event);
-                        for(let i = 1; i <= events.length; i++) {
-                            $(this).attr("data-position", i)
-                        }
-                    });
+            $(".profile").click(function() {
+                let profileCss = $(".details").css("display");
+                if(profileCss == "none") {
+                    $(".details").fadeIn(100);
+                } else {
+                    $(".details").fadeOut(100)
                 }
-            });   
+            })
         })
     </script>
     <script>
