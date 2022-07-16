@@ -7,18 +7,18 @@
     <title>Admin | Home</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <script src="https://kit.fontawesome.com/3a7e8b6e65.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-    
+  
 </head>
 <body>
     <div class="admin-container">
         <header class="bg-secondary admin-header">
             <div class="logo col-3 text-center">
-                <a href="#"><h1>SMI University</h1></a>
+                <a href="#"><h1>XYZ University</h1></a>
             </div>
             <div class="profile col-3">
                 <img src="../images/profile.jpg" height="30" alt="Profile Image">
@@ -57,98 +57,74 @@
                 </nav>
             </aside>
             <section id="main-content" class="col-9">
-                <h1 class="mb-5">Management of BS in Computer Science of semester 1</h1>
-                <div class="course-related">
-                    <div class="courses col-6">
-                            <p>Calculus & Analytical Geometry</p>
-                            <p>Programming Fundamentals</p>
-                            <p>Applied Physics</p>
-                            <p>ICT</p>
-                            <p>English I</p>
-                            <p>Arabic I</p>
-                            <p>English II</p>
-                            <p>Object Oriented Programming</p>
-                            <p>Digital Logic Design</p>
-                            <p>Probability and Statistics</p>
-                    </div>
-                    <div class="selected-courses col-6" id="course-dropdown">
-                        <p>Drop Courses here</p>
-                        <div class="drop-area" style="border: 1px solid black; height: 100%;">&nbsp;</div>
-                        <p class="text-danger text"></p>
-                        <button type="button" style="width: 100%;" class="submit-btn btn btn-info">Submit</button>
-                    </div>
-                </div>
+                    <header class="section-header">
+                        <h1 style="margin-bottom: 20px; font-size: 25px;">Departments > Degrees > Semester</h1>
+                        <div class="form-group col-3">
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Search">
+                        </div>
+                    </header>   
+                    
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Request By</th>
+                        <th scope="col">Topic</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr data-position="1">
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>lark</td>
+                        <td>
+                            <button type="button" class="btn btn-danger">Reject</button>
+                            <button type="button" class="btn btn-success">Approve</button>
+                        </td>
+                      </tr>
+                      <tr data-position="2">
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>kaka</td>
+                        <td>
+                            <button type="button" class="btn btn-danger">Reject</button>
+                            <button type="button" class="btn btn-success">Approve</button>
+                        </td>
+                      </tr>
+                      <tr data-position="3">
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>laka</td>
+                        <td>
+                            <button type="button" class="btn btn-danger">Reject</button>
+                            <button type="button" class="btn btn-success">Approve</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <p>3 of 400 Results Found (You can organize list by sorting manually most top ar going to held soon)</p>
             </section>
         </main>
     </div>
     <script>
-        
-    </script>
-    <script>
         $(document).ready(function() {
-            
-            let items = [];
-            $(document).on("click", ".singleCourses p", function(event) {
-                content = $(this).text();
-                console.log(content)
-
-                let newArr = items.filter((item) => item != content);
-                items = newArr;
-                console.log(newArr);
-                $(this).fadeOut(100);
-            })    
-            let error;
-            $(".courses p").draggable({helper: 'clone'});
-            $(".drop-area").droppable({
-                accept: '.courses p',
-                drop: function(ev, ui) {
-                    
-                    function htmlDecode(input){
-                        var e = document.createElement('textarea');
-                        e.innerHTML = input;
-                        return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
-                    }
-                        error = false;
-                    $(".text").text("")
-                    console.log(error)
-                    var droppedItem = $(ui.draggable).clone();
-                    let text = droppedItem.html()
-                    for(let i = 0; i < items.length; i++) {
-                        if(items[i] == htmlDecode(text)) {
-                            console.log("Already there");
-                            error = true;
+            let events = []
+            $("table tbody").sortable({
+                update: function() {
+                    events = []
+                    $(this).children().each(function(index) {
+                        let event = $(this).attr("data-position");
+                        events.push(event);
+                        for(let i = 1; i <= events.length; i++) {
+                            $(this).attr("data-position", i)
                         }
-                    }
-                    if(items.length == 6) {
-                        error = true;
-                    }
-                    if(error) {
-                        $(".text").text("Sorry That Element is already been inserted or you are trying to put more than 6 Courses")
-                    } else {
-                        items.push(htmlDecode(text))
-                        console.log(items)
-                        let childLength = $(".drop-area p is").children().length;
-                        function htmlDecode(input) {
-                            var e = document.createElement("textarea");
-                            e.innerHTML = input
-                            return e.childNodes.length === 0 ? "" : e.childNodes[0].nodeValue;
-                        }    
-                        const course = $(this).append(droppedItem).addClass("singleCourses");
-                        }
-                    console.log(items)
+                    });
                 }
-            });
-            $(".submit-btn").click(function() {
-                if(items.length == 0) {
-                    $(".text").text("Please Drop courses in the above box")
-                } else {
-                    console.log('Submitted')
-                }
-            })
+            });   
         })
     </script>
     <script>
-        
         $(document).ready(function(){
             $('li').click(function() {
                 const key = $(this).attr("key")
@@ -184,14 +160,6 @@
     }
 });
 
-    </script>
-    
-    <script>
-        $(document).ready(function() {
-            $(".singleCourses p").click(function() {
-                alert("Clicked!")
-            })
-        })
     </script>
 </body>
 </html>

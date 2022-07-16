@@ -176,3 +176,19 @@ form {
     border: 1px solid black;
     display: inline-block;
 }
+.drop-area p:hover {
+    border: 2px solid red;
+    color: red;
+    cursor: pointer;
+}
+.date > input {
+    outline: none;
+    display: inline;
+}
+.date i {
+    background-color: white;
+    border: 1px solid black;
+    padding: 5px;
+    margin: 0px;
+    display: inline;
+}
